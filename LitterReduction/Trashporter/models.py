@@ -8,7 +8,7 @@ class Report(models.Model):
     # we don't need to put id here
     # django automatically creates an id field
     picture = models.ImageField(upload_to='reports/')
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now_add=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 
