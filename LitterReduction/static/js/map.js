@@ -37,7 +37,7 @@ for (let i = 0; i < locations.length; i++) {
 
     var popup = new mapboxgl.Popup({
         className: 'my-popup'}).setHTML(`<h1>Litter Report</h1> <p>Litter Type: ${garbage_types[i]}</p> <p>Amount of Litter: ${garbage_amounts[i]}</p>
-                    <p>Other Comments: ${other_comments[i]}</p><p>..${images[i]}</p>`);
+                    <p>Other Comments: ${other_comments[i]}</p>`);
 
     // Add the image element to the popup content
     popup._content.appendChild(img);
