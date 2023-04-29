@@ -3,7 +3,10 @@
     height: 400px;
     background-color: rgb(224, 243, 224);
 }
-
+img {  
+    max-width: 100%;  
+    height: auto;  
+    }  
 #map { 
     margin: auto; 
     width: 80%;
@@ -80,6 +83,7 @@ nav li a:hover {
 	height: 500px; /*was 300 px*/
 	background-color: rgb(128, 128, 128);
 }
+
 /* for the button*/
 #capture {
 	display: block;
