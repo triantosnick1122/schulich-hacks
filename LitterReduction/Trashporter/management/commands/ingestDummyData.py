@@ -46,7 +46,11 @@ class Command(BaseCommand):
                 image = urllib.request.urlopen(link)
 
                 # now grab the comment from the current row of comments file
-                comment = next(comments_reader)[0]
+                # if there are no more records left in the comments file, just stop the outer loop.
+                try:
+                    comment = next(comments_reader)[0]
+                except StopIteration:
+                    break
 
 
                 # randomly generated fields
