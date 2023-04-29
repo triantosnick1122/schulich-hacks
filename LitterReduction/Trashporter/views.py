@@ -14,3 +14,10 @@ def camera_feed(request):
 def camera(request):
     cam = VideoCamera()
     return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
+
+def capture_img(request):
+    cam = VideoCamera()
+    frame = cam.get_frame()
+    print('AAA')
+    cv2.imwrite('image.jpg', frame)
+    # return cam.get_frame()
