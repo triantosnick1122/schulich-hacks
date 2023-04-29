@@ -31,18 +31,18 @@ console.log(locations);
 
 // creates clickable "popup" markers on the map for each report that show the image and other info about the litter report when clicked on. 
 for (let i = 0; i < locations.length; i++) {
-    console.log(locations[i]);
+
+    var img = document.createElement("img");
+    img.src = "https://resources.reduce-recycle.com.au/bswwrrg/wp-content/uploads/2019/08/28233636/Marine-litter2-1.jpg";
 
     var popup = new mapboxgl.Popup({
         className: 'my-popup'}).setHTML(`<h1>Litter Report</h1> <p>Litter Type: ${garbage_types[i]}</p> <p>Amount of Litter: ${garbage_amounts[i]}</p>
-                    <p>Other Comments: ${other_comments[i]}</p><div style="background-image: url('output_2HrUydZ.jpg');"></div><p>..${images[i]}</p>`)
+                    <p>Other Comments: ${other_comments[i]}</p><p>..${images[i]}</p>`);
+
+    // Add the image element to the popup content
+    popup._content.appendChild(img);
 
     const marker = new mapboxgl.Marker()
         .setLngLat(locations[i])
         .setPopup(popup).addTo(map);
 }
-// for (let i = 0; i < numMarkers; i++) {
-//   const lng = center[0] + (Math.random() * radius * 2 - radius);
-//   const lat = center[1] + (Math.random() * radius * 2 - radius);
-//   const marker = new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
-// }
