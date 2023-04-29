@@ -48,7 +48,13 @@ class Command(BaseCommand):
                 randlong = random.uniform(-120, -70)
 
                 # turn the image into a django File object
-                imageFile = File(image)
+                # we'll save it in reports folder
+                # the name will be extracted from the link (there's a filename in it.)
+                filename = os.path.basename(link)
+
+                imageFile = File(image, name=filename)
+
+                print('name of the saved file is ' + str(imageFile.name))
 
 
 
