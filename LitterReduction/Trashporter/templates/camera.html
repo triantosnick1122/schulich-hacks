@@ -3,6 +3,8 @@
 <head>
     <title>Webcam App</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/capture_img.js' %}"></script>
 </head>
 <body>
     <h1>Webcam App</h1>
@@ -10,5 +12,6 @@
         <img src="../camera/">
     </div>
     <button id="capture">Try</button>
+
 </body>
 </html>
