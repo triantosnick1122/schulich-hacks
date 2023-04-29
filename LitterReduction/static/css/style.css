@@ -1,0 +1,48 @@
+/* Banner and Logo */
+.banner {
+	position: relative;
+	width: 100%;
+	height: 15vh;
+	overflow: hidden;
+}
+.banner img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.logo {
+	position: absolute;
+	top: 3%;
+	width: auto;
+	height: 15vh;
+	overflow: hidden;
+}
+.logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/* Navigation Bar */
+nav {
+	background-color: #333;
+}
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+nav li {
+	float: left;
+}
+nav li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 2.5% 3%;
+	text-decoration: none;
+    margin-right: 20px;
+}
+nav li a:hover {
+	background-color: #111;
+}
