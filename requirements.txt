@@ -2,3 +2,4 @@ django
 django-environ
 psycopg2-binary
 cv2
+pillow
