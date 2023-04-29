@@ -58,6 +58,13 @@ nav li a:hover {
 	background-color: #111;
 }
 
+#homepage{
+	position: relative;
+	max-height: 72vh;
+	width: auto;
+	overflow: hidden;
+}
+
 /* Camera Page */
 
 #camera {
