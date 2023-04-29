@@ -49,7 +49,7 @@ def capture_img(request):
     return HttpResponse(status=200)
 
 # get all reports from db and return them as json array
-def get_reports(request):
+def get_reports():
     reports = Report.objects.all()
     reports_json = []
     for report in reports:
@@ -62,4 +62,30 @@ def get_reports(request):
             "timestamp": report.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
             "picture": report.picture.url
         })
-    return HttpResponse(json.dumps(reports_json), content_type="application/json", status=200)
+    return reports_json
+
+# turn the list of reports into our preferred format
+def format_reports():
+    # take the list of reports
+    reports = get_reports()
+    # generate a list of latitude-longitude tuples
+    locations = []
+    # also type_tags
+    type_tags = []
+    # so on and so forth
+    quantity_tags = []
+    extra_descriptions = []
+    timestamps = []
+    pictures = []
+
+    # build the lists
+    for report in reports:
+        locations.append((report['latitude'], report['longitude']))
+        type_tags.append(report['type_tag'])
+        quantity_tags.append(report['quantity_tag'])
+        extra_descriptions.append(report['extra_description'])
+        timestamps.append(report['timestamp'])
+        pictures.append(report['picture'])
+
+    return locations, type_tags, quantity_tags, extra_descriptions, timestamps, pictures    
+
