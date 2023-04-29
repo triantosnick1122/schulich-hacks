@@ -30,6 +30,7 @@ def camera(request):
     return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
 
 def capture_img(request):
+    print('Capturing image and making a report...')
     latitude = float(request.GET["latitude"])
     longitude = float(request.GET["longitude"])
     print(latitude,longitude)
@@ -41,7 +42,24 @@ def capture_img(request):
     report = Report(latitude=latitude, longitude=longitude)
     report.picture.save('output.jpg', file)
     report.save()
+    print('Report saved!')
     # instance = Report.objects.get(id=14)
     # imfield = instance.picture.open()
     # img = cv2.imread(imfield.name)
     return HttpResponse(status=200)
+
+# get all reports from db and return them as json array
+def get_reports(request):
+    reports = Report.objects.all()
+    reports_json = []
+    for report in reports:
+        reports_json.append({
+            "latitude": report.latitude,
+            "longitude": report.longitude,
+            "type_tag": report.type_tag,
+            "quantity_tag": report.quantity_tag,
+            "extra_description": report.extra_description,
+            "timestamp": report.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+            "picture": report.picture.url
+        })
+    return HttpResponse(json.dumps(reports_json), content_type="application/json", status=200)
