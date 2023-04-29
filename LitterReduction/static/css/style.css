@@ -1,0 +1,19 @@
+.my-popup {
+    /* width: 400px !important; 
+    height: 400px !important; */
+}
+.mapboxgl-popup-content {
+    width: 400px; 
+    height: 400px;
+    background-color: rgb(224, 243, 224);
+}
+/* .my-popup p {
+    max-width: 100%;
+} */
+
+
+#map { 
+    margin: auto; 
+    width: 80%;
+    height: 80vh;
+}

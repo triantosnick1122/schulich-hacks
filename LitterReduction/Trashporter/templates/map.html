@@ -1,6 +1,26 @@
 {% extends "index.html" %}
+{% block head %}
+<title>Interactive maps for Django web apps</title>
+{% load static %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+<link href="{% static 'css/style.css' %}" rel='stylesheet' />
+{% endblock head%}
+
 {% block content%}
+<script>
+    window.API_TOKEN = "{{ 'pk.eyJ1IjoiYXJtYW4tc2NodWxpY2giLCJhIjoiY2xoMWlzZHE3MTNwazNxcnQ2ZGl0a3EwYSJ9.kliHpkp_lGbzNYBTQj_DqA' }}";
+  </script>
 <h2>
     Litter Sites Map
 </h2>
+<div id='map'></div>
+<p id="locations" data-locations = "{{ locations}}"></p>
+<p id="descriptions" data-descriptions = "{{ descriptions}}"></p>
+<script src="{% static 'js/map.js' %}"></script>
+
+
+
+
 {% endblock content %}
+
