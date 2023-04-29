@@ -14,6 +14,7 @@ class Report(models.Model):
         FOOD = 'FO', _('Food')
         DANGEROUS = 'DA', _('Dangerous')
         OTHER = 'OT', _('Other')
+        GLASS = 'GL', _('Glass')
         NONE = 'NO', _('None')
 
     class LitterQuantity(models.TextChoices):
