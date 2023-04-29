@@ -35,3 +35,7 @@ class Report(models.Model):
     
     def get_litter_quantity(self) -> LitterQuantity:
         return self.LitterQuantity[self.quantity_tag]
+
+    # override Django default behavior of appending app name to table name
+    class Meta:
+        db_table = 'report'

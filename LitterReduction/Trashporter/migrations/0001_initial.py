@@ -23,5 +23,8 @@ class Migration(migrations.Migration):
                 ('quantity_tag', models.CharField(choices=[('LOW', 'Low'), ('MED', 'Medium'), ('LRG', 'Large'), ('NON', 'None')], default='NON', max_length=3)),
                 ('extra_description', models.CharField(default='', max_length=100)),
             ],
+            options={
+                'db_table': 'report',
+            },
         ),
     ]
