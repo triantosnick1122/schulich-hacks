@@ -3,7 +3,7 @@ mapboxgl.accessToken = apiToken;
 var map = new mapboxgl.Map({
  container: 'map',
  style: 'mapbox://styles/mapbox/outdoors-v12', 
-center: [30.5, 50.5],
+center: [-114.08, 51.05],
  zoom: 9,
  bearing: 0, 
  height: '100%'
@@ -20,10 +20,11 @@ center: [30.5, 50.5],
 let locations = JSON.parse(document.getElementById("locations").dataset.locations); 
 let other_comments = JSON.parse(document.getElementById("other_comments").dataset.otherComments); 
 let garbage_amounts = JSON.parse(document.getElementById("garbage_amounts").dataset.garbageAmounts);
-let garbage_types = JSON.parse(document.getElementById("garbage_types").dataset.garbageTypes); 
+let garbage_types = JSON.parse(document.getElementById("garbage_types").dataset.garbageTypes);
+let images = JSON.parse(document.getElementById("images").dataset.images); 
 
 
-const center = [30.5, 50.5];
+const center = [51.05, -114.08];
 const radius = 0.5; // in degrees
 const numMarkers = 100;
 console.log(locations); 
@@ -31,12 +32,14 @@ console.log(locations);
 // creates clickable "popup" markers on the map for each report that show the image and other info about the litter report when clicked on. 
 for (let i = 0; i < locations.length; i++) {
     console.log(locations[i]);
+
+    var popup = new mapboxgl.Popup({
+        className: 'my-popup'}).setHTML(`<h1>Litter Report</h1> <p>Litter Type: ${garbage_types[i]}</p> <p>Amount of Litter: ${garbage_amounts[i]}</p>
+                    <p>Other Comments: ${other_comments[i]}</p><div style="background-image: url('output_2HrUydZ.jpg');"></div><p>..${images[i]}</p>`)
+
     const marker = new mapboxgl.Marker()
         .setLngLat(locations[i])
-        .setPopup(new mapboxgl.Popup({
-        className: 'my-popup'}).setHTML(`<h1>Litter Report</h1> <p>Litter Type: ${garbage_types[i]}</p> <p>Amount of Litter: ${garbage_amounts[i]}</p>
-                    <p>Other Comments: ${other_comments[i]}</p>`))
-        .addTo(map);
+        .setPopup(popup).addTo(map);
 }
 // for (let i = 0; i < numMarkers; i++) {
 //   const lng = center[0] + (Math.random() * radius * 2 - radius);

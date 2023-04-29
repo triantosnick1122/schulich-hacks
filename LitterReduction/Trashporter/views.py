@@ -13,14 +13,16 @@ def index(request):
 
 def litter_map(request): 
     # Your code to retrieve the location and other data goes here
-    locations = [(30.5, 50.5), (30.55, 50.6)]
-    garbage_amounts = ["small", "large"]
-    garbage_types = ["plastic", "metal"]
-    other_comments = ["This is a description of the location", "second description"]
+    # locations = [(30.5, 50.5), (30.55, 50.6)]
+    # garbage_amounts = ["small", "large"]
+    # garbage_types = ["plastic", "metal"]
+    # other_comments = ["This is a description of the location", "second description"]
 
-    
-    return render(request, 'map.html', {'locations': json.dumps(locations), 'other_comments': json.dumps(other_comments), 
-                                        'garbage_types': json.dumps(garbage_types), 'garbage_amounts': json.dumps(garbage_amounts)})
+    locations, type_tags, quantity_tags, extra_descriptions, timestamps, pictures = format_reports()
+
+    return render(request, 'map.html', {'locations': json.dumps(locations), 'other_comments': json.dumps(extra_descriptions), 
+                                        'garbage_types': json.dumps(type_tags), 'garbage_amounts': json.dumps(quantity_tags),
+                                        'images': json.dumps(pictures)})
 def camera_feed(request):
     return render(request, "camera.html")
 
@@ -80,12 +82,12 @@ def format_reports():
 
     # build the lists
     for report in reports:
-        locations.append((report['latitude'], report['longitude']))
+        locations.append((report['longitude'], report['latitude']))
         type_tags.append(report['type_tag'])
         quantity_tags.append(report['quantity_tag'])
         extra_descriptions.append(report['extra_description'])
         timestamps.append(report['timestamp'])
         pictures.append(report['picture'])
 
-    return locations, type_tags, quantity_tags, extra_descriptions, timestamps, pictures    
+    return locations, type_tags, quantity_tags, extra_descriptions, timestamps, pictures
 
