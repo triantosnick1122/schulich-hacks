@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,StreamingHttpResponse
 from django.views.decorators import gzip
-
+from .models import Report
 from Trashporter.camera import *
 
 def index(request):
@@ -21,4 +21,6 @@ def capture_img(request):
     print(latitude,longitude)
     frame = VideoCamera().frame
     cv2.imwrite('image.jpg', frame)
+    report = Report(picture=frame, latitude=latitude, longitude=longitude)
+    report.save()
     return HttpResponse(status=200)
