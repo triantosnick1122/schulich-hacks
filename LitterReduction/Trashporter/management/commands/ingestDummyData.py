@@ -36,22 +36,17 @@ class Command(BaseCommand):
         comments_reader = csv.reader(sample_comments_file, delimiter=",")
         next(comments_reader)
 
-        # iterate through the csv file of links
-        for row in links_reader:
+        # iterate through the csv file of comments (since it's smaller than the image links file)
+        for row in comments_reader:
             try:
                 # grab the link from this row
-                link = row[0]
+                comment = row[0]
+                
+
+                # now grab the link from the next row
+                link = next(links_reader)[0]
                 # download the image at the link
-                # print('Attempting to download from ' + link)
                 image = urllib.request.urlopen(link)
-
-                # now grab the comment from the current row of comments file
-                # if there are no more records left in the comments file, just stop the outer loop.
-                try:
-                    comment = next(comments_reader)[0]
-                except StopIteration:
-                    break
-
 
                 # randomly generated fields
                 # set the timestamp to some random time between now and 30 days ago
