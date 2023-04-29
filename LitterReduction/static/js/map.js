@@ -18,18 +18,24 @@ center: [30.5, 50.5],
 //   });
 
 let locations = JSON.parse(document.getElementById("locations").dataset.locations); 
-let descriptions = JSON.parse(document.getElementById("descriptions").dataset.descriptions); 
+let other_comments = JSON.parse(document.getElementById("other_comments").dataset.otherComments); 
+let garbage_amounts = JSON.parse(document.getElementById("garbage_amounts").dataset.garbageAmounts);
+let garbage_types = JSON.parse(document.getElementById("garbage_types").dataset.garbageTypes); 
+
 
 const center = [30.5, 50.5];
 const radius = 0.5; // in degrees
 const numMarkers = 100;
 console.log(locations); 
+
+// creates clickable "popup" markers on the map for each report that show the image and other info about the litter report when clicked on. 
 for (let i = 0; i < locations.length; i++) {
     console.log(locations[i]);
     const marker = new mapboxgl.Marker()
         .setLngLat(locations[i])
         .setPopup(new mapboxgl.Popup({
-        className: 'my-popup'}).setHTML(`<h1>Litter Report</h1><p>${descriptions[i]}</p>`))
+        className: 'my-popup'}).setHTML(`<h1>Litter Report</h1> <p>Litter Type: ${garbage_types[i]}</p> <p>Amount of Litter: ${garbage_amounts[i]}</p>
+                    <p>Other Comments: ${other_comments[i]}</p>`))
         .addTo(map);
 }
 // for (let i = 0; i < numMarkers; i++) {
