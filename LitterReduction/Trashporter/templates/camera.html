@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Webcam App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/capture_img.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock head %}
+
+{% block content %}
+<h1 style="text-align: center">Capture and report</h1>
+    <div id="camera_container">
+        <img id="camera" src="../camera/">
+        <button id="capture">Take picture</button>
+    </div>
+
+{% endblock content %}
