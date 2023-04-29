@@ -3,9 +3,19 @@ import threading
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture(0)
-        (self.grabbed, self.frame) = self.video.read()
-        threading.Thread(target=self.update, args=()).start()
+        camera_feed_val = 0
+        while camera_feed_val < 5:
+            try:
+                self.video = cv2.VideoCapture(camera_feed_val)
+                (self.grabbed, self.frame) = self.video.read()
+                _, jpeg = cv2.imencode('.jpg', self.frame)
+                break
+            except:
+                camera_feed_val += 1
+        if camera_feed_val >= 5:
+            raise Exception("Failed to identify working camera.")
+        else:
+            threading.Thread(target=self.update, args=()).start()
 
     def __del__(self):
         self.video.release()
