@@ -57,10 +57,10 @@ class Command(BaseCommand):
                 randlat = random.uniform(30, 50)
                 randlong = random.uniform(-120, -70)
                 # set the type_tag to a random value
-                type_tags = ['PL', 'FU', 'ME', 'FO', 'DA', 'OT', 'GL', 'NO']
+                type_tags = ['Plastic', 'Furniture', 'Metal', 'Food', 'Dangerous', 'Other', 'Glass', 'None']
                 randtag = random.choice(type_tags)
                 # set the quantity tag to a random value
-                quantity_tags = ['LOW', 'MED', 'LRG', 'NON']
+                quantity_tags = ['Low', 'Medium', 'Large', 'None']
                 randquant = random.choice(quantity_tags)
 
 
