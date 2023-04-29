@@ -12,4 +12,7 @@ class Report(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
 
+    # override Django default behavior of appending app name to table name
+    class Meta:
+        db_table = 'report'
     
