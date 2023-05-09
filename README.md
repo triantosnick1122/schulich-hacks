@@ -1,3 +1,5 @@
+# Third place overall winner at Schulich Hacks 2023!
+
 # Welcome to Trashporter!
 
 Trashporter is a data-driven, community-based service designed to increase awareness of littering and dumping in our communities. Join today to help keep your city clean!
